@@ -34,5 +34,6 @@ vignettes/*.pdf
 
 # Token
 TOKEN.txt
+GOOGLE_TOKEN.txt
 .Rproj.user
 *.Rproj
