@@ -9,7 +9,7 @@ makeRequest <- function(latitude, longitude, distance) {
   params <- list(access_token = access.token,
                    lat = latitude,
                    lng = longitude,
-                    distance)
+                    distance = distance)
     #r <- GET("https://api.instagram.com/v1/locations/search",
     #         query = params)
       
@@ -26,7 +26,7 @@ summarizeRequest <- function(parsedData){
     numlikes <- lapply(X = parsedData, FUN = function(x) x$likes$count) %>% as.numeric()
     alltags <- lapply(X = parsedData, FUN = function(x) x$tags) %>% as.character()
     
-    coords <- data.frame(time = pictime, latitude = lats, longitude = longs, likes = numlikes, tags = alltags)
+    summary <- data.frame(time = pictime, latitude = lats, longitude = longs, likes = numlikes, tags = alltags)
     
-    return(coords)
+    return(summary)
 }

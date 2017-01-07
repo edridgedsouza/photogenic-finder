@@ -1,11 +1,10 @@
 library(dplyr)
 library(httr)
 
-fileName <- "./GOOGLE_TOKEN.txt"
-apikey <- readChar(fileName, file.info(fileName)$size)
+filename <- "./GOOGLE_TOKEN.txt"
+apikey <- readChar(filename, file.info(filename)$size)
 
-# First use Google Places API to find the placename identifier
-# https://developers.google.com/places/place-id
+# Use Google Places API to find the coordinates given a place's name
 
 getCoords <- function(placeName) {
   params <- list(key = apikey, query = placeName)
@@ -21,6 +20,9 @@ getCoords <- function(placeName) {
     coords <- data.frame(latitude = lat, longitude = long)
     
     return(coords)
+  }
+  else {
+    return(FALSE)
   }
 }
 
