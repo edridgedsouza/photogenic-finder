@@ -5,7 +5,7 @@ makePlot <- function(lat, long, dist) {
   if (length(requestData) != 0){
     imageData <- summarizeRequest(requestData)
     
-    p <- qmplot(source="google", maptype = "roadmap",
+    p <- qmplot(source="google", maptype = "roadmap", mapcolor = "bw",
                 data=imageData, 
                 x = longitude, y=latitude,
                 alpha = I(0)) + # Ignore the default qmplot point mapping
