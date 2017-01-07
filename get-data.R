@@ -4,11 +4,11 @@ library(httr)
 fileName <- "./TOKEN.txt"
 access.token <- readChar(fileName, file.info(fileName)$size)
 
-makeRequest <- function(latitude = 48.858844, longitude = 2.294351) {
+makeRequest <- function(latitude, longitude) {
     
   params <- list(access_token = access.token,
-                   lat = 42.3912, # latitude
-                   lng = -72.5267, # longitude
+                   lat = latitude,
+                   lng = longitude,
                     distance = 5000)
     #r <- GET("https://api.instagram.com/v1/locations/search",
     #         query = params)
@@ -30,6 +30,3 @@ summarizeRequest <- function(parsedData){
     
     return(coords)
 }
-
-requestData <- makeRequest(latitude = 42.3912, longitude = -72.5267)
-imageData <- summarizeRequest(requestData)
