@@ -34,3 +34,5 @@ vignettes/*.pdf
 
 # Token
 TOKEN.txt
+.Rproj.user
+*.Rproj
