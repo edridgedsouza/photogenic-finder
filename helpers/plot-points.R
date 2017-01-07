@@ -10,8 +10,8 @@ makePlot <- function(lat, long, dist) {
                 x = longitude, y=latitude,
                 alpha = I(0)) + # Ignore the default qmplot point mapping
       geom_point(aes(longitude, latitude, size=likes, color = likes),
-                 alpha = 0.5) +
-      scale_colour_distiller(palette = "Reds", direction = 1)
+                 alpha = 0.7) +
+      scale_colour_gradient(low = "green", high = "red")
     
     return(p)
   }
