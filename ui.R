@@ -8,9 +8,10 @@
 #
 
 library(shiny)
+library(shinythemes)
 
 # Define UI for application that draws a histogram
-shinyUI(fluidPage(
+shinyUI(fluidPage(theme = shinytheme("cerulean"),
   
   # Application title
   titlePanel("Photogenic Finder"),
@@ -21,7 +22,7 @@ shinyUI(fluidPage(
        textInput("location",
                    "Location to search",
                    "UMass Amherst"),
-       sliderInput("radius", "Radius to search", 1000, 5000, 3000)
+       sliderInput("radius", "Radius to search", 1000, 5000, 1000)
     ),
     
     
@@ -29,5 +30,25 @@ shinyUI(fluidPage(
     mainPanel(
       plotOutput("resultPlot")
     )
+  ),
+  
+  # https://stackoverflow.com/a/22475216
+  tags$style(type="text/css", "
+           #loadmessage {
+             position: fixed;
+             bottom: 0px;
+             left: 25%;
+             width: 50%;
+             padding: 5px 0px 5px 0px;
+             text-align: center;
+             font-weight: bold;
+             font-size: 100%;
+             color: #000000;
+             background-color: #888888;
+             z-index: 105;
+           }
+  "),
+  conditionalPanel(condition="$('html').hasClass('shiny-busy')",
+                   tags$div("Loading...",id="loadmessage")
   )
 ))
